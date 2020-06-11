@@ -6,6 +6,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import ToastContainer from '../../components/ToastContainer';
 import logoImg from '../../assets/logo.svg';
 import { Container, Content, Background } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -34,8 +35,13 @@ const SignIn: React.FC = () => {
 
         signIn(data);
       } catch (error) {
-        const errors = getValidationErrors(error);
-        formRef.current?.setErrors(errors);
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
+          console.log(error);
+          formRef.current?.setErrors(errors);
+        } else {
+          formRef.current?.setErrors({ email: 'Inválido' });
+        }
       }
     },
     [signIn],
@@ -61,6 +67,7 @@ const SignIn: React.FC = () => {
           <FiLogIn />
           Criar Conta
         </a>
+        <ToastContainer />
       </Content>
       <Background />
     </Container>
