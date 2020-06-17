@@ -12,7 +12,6 @@ interface ErrorProps {
   isHoverAlert: boolean;
 }
 export const Container = styled.div<ContainerProps>`
-  /* cursor: text; */
   background: #232129;
   border-radius: 10px;
   padding: 16px;
@@ -51,7 +50,7 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
     border: 0;
     background: transparent;
-    color: #f4ede8;
+    color: #f4ede8 ;
 
     &::placeholder {
       color: #666360;
@@ -60,6 +59,14 @@ export const Container = styled.div<ContainerProps>`
     & + input {
       margin-top: 8px;
     }
+  }
+
+  input:-webkit-autofill {
+    -webkit-appearance: none;
+    box-shadow: 0 0 0px 1000px #232129 inset;
+    -webkit-text-fill-color: #f4ede8;
+    caret-color: #f4ede8;
+
   }
 
   svg {

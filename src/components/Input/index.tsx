@@ -30,9 +30,6 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
     setIsFilled(!!inputRef.current.value);

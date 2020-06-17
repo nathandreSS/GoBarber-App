@@ -1,21 +1,39 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
-import sigUpBacgroundImg from '../../assets/sign-up-background.png';
+import signUpBacgroundImg from '../../assets/sign-up-background.png';
 
+const appearFromRight = keyframes`
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
 export const Container = styled.div`
   height: 100vh;
-
   display: flex;
   align-items: stretch;
 `;
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  place-content: center;
   width: 100%;
   max-width: 700px;
+`;
+export const AnimationContent = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  animation: ${appearFromRight} 1s;
+
   form {
     margin: 80px 0;
     width: 340px;
@@ -26,19 +44,6 @@ export const Content = styled.div`
       margin-bottom: 24px;
     }
   }
-
-  a {
-    text-decoration: none;
-    color: #f4ede8;
-    display: block;
-    margin-top: 24px;
-    transition: color 0.2s;
-
-    &:hover {
-      color: ${shade(0.2, '#f4ede8')};
-    }
-  }
-
   > a {
     text-decoration: none;
     color: #f4ede8;
@@ -57,6 +62,6 @@ export const Content = styled.div`
 `;
 export const Background = styled.div`
   flex: 1;
-  background: url(${sigUpBacgroundImg}) no-repeat center;
+  background: url(${signUpBacgroundImg}) no-repeat center;
   background-size: cover;
 `;

@@ -37,7 +37,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
       setData({ token, user });
     } catch (error) {
-      console.log(error.message);
+      throw new Error('Erro na autenticação');
     }
   }, []);
 

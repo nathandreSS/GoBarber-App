@@ -1,13 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
+import { animated } from 'react-spring';
 import sigInBacgroundImg from '../../assets/sign-in-background.png';
 
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }1
+`;
 export const Container = styled.div`
   height: 100vh;
-
   display: flex;
   align-items: stretch;
 `;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,6 +27,17 @@ export const Content = styled.div`
   width: 100%;
   max-width: 700px;
   align-items: center;
+`;
+export const AnimationContent = styled.div`
+  animation: ${appearFromLeft} 1s;
+  display: flex;
+  flex-direction: column;
+
+  place-content: center;
+  width: 100%;
+  max-width: 700px;
+  align-items: center;
+
   form {
     margin: 80px 0;
     width: 340px;
@@ -55,6 +77,7 @@ export const Content = styled.div`
     }
   }
 `;
+
 export const Background = styled.div`
   flex: 1;
   background: url(${sigInBacgroundImg}) no-repeat center;
